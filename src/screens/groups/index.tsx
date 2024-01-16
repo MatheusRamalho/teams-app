@@ -1,9 +1,13 @@
-import { Text, View } from 'react-native'
+import { Header } from '@components/Header'
+
+import { Container } from './styles'
+import { Highlight } from '@components/Highlight'
 
 export const Groups = () => {
     return (
-        <View>
-            <Text> Teams app </Text>
-        </View>
+        <Container>
+            <Header />
+            <Highlight title="Turmas" subtitle="Jogue com sua turma" />
+        </Container>
     )
 }
