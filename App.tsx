@@ -7,7 +7,7 @@ import { defaultTheme } from '@theme/index'
 
 import { Loading } from '@components/Loading'
 
-import { Groups } from '@screens/groups'
+import { Home } from '@screens/home'
 
 export default function App() {
     const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold })
@@ -16,7 +16,7 @@ export default function App() {
         <ThemeProvider theme={defaultTheme}>
             <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
 
-            {fontsLoaded ? <Groups /> : <Loading />}
+            {fontsLoaded ? <Home /> : <Loading />}
         </ThemeProvider>
     )
 }
