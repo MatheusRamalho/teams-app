@@ -50,3 +50,17 @@ export const playerAddByGroup = async (newPlayer: PlayerStorageDTO, group: strin
         throw error
     }
 }
+
+export const playerRemoveByGroup = async (playerName: string, group: string) => {
+    try {
+        const storedPlayers = await playersGetByGroup(group)
+
+        const playersWithoutParameterPlayer = storedPlayers.filter((player) => player.name !== playerName)
+
+        const listPlayersStorage = JSON.stringify(playersWithoutParameterPlayer)
+
+        await AsyncStorage.setItem(`${PLAYER_COLLECTION}-${group}`, listPlayersStorage)
+    } catch (error) {
+        throw error
+    }
+}

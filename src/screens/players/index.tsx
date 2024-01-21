@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
 import { Alert, FlatList, TextInput } from 'react-native'
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { displayError } from '@utils/displayError'
 
-import { playersGetByGroupAndTeam, playerAddByGroup } from '@storage/player'
+import { playersGetByGroupAndTeam, playerAddByGroup, playerRemoveByGroup } from '@storage/player'
+import { groupRemove } from '@storage/group'
 import { PlayerStorageDTO } from '@storage/PlayerStorageDTO'
 
 import { Header } from '@components/Header'
@@ -31,6 +32,8 @@ export const Players = () => {
 
     const route = useRoute()
     const { group } = route.params as RoutesParams
+
+    const navigation = useNavigation()
 
     const validatingPlayerNameIsNotEmptyOrContainsSpaces = newPlayerName.trim().length === 0
 
@@ -71,12 +74,29 @@ export const Players = () => {
         }
     }
 
-    const handleRemovePlayer = () => {
-        console.log('Removeu o player')
+    const handleRemovePlayer = async (playerName: string) => {
+        try {
+            await playerRemoveByGroup(playerName, group)
+            fetchPlayersByTeam()
+        } catch (error) {
+            displayError(error, 'Remover Pessoa', 'Não foi possível remover essa pessoa')
+        }
     }
 
-    const handleRemoveGroup = () => {
-        console.log('Removeu o grupo')
+    const groupRemoveByName = async () => {
+        try {
+            await groupRemove(group)
+            navigation.navigate('home')
+        } catch (error) {
+            displayError(error, 'Remover grupo', 'Não foi possível remover o grupo')
+        }
+    }
+
+    const handleRemoveGroup = async () => {
+        Alert.alert('Remove', 'Deseja remover o grupo?', [
+            { text: 'Não', style: 'cancel' },
+            { text: 'Sim', onPress: () => groupRemoveByName() },
+        ])
     }
 
     useEffect(() => {
@@ -118,7 +138,9 @@ export const Players = () => {
             <FlatList
                 data={players}
                 keyExtractor={(item) => item.name}
-                renderItem={({ item }) => <PlayerCard name={item.name} onRemove={() => handleRemovePlayer} />}
+                renderItem={({ item }) => (
+                    <PlayerCard name={item.name} onRemove={() => handleRemovePlayer(item.name)} />
+                )}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={() => <ListEmpty message="Não há pessoas nesse time" />}
                 contentContainerStyle={[{ paddingBottom: 100 }, players.length === 0 && { flex: 1 }]}
