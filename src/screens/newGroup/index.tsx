@@ -22,13 +22,13 @@ export const NewGroup = () => {
     const handleCreateNewGroup = async () => {
         try {
             if (validatingGroupNameIsNotEmptyOrContainsSpaces) {
-                return Alert.alert('Novo grupo', 'Informe um nome para o grupo')
+                return Alert.alert('Nova turma', 'Informe um nome para a turma')
             }
 
             await groupCreate(group)
             navigation.navigate('players', { group })
         } catch (error) {
-            displayError(error, 'Nova grupo', 'Não foi possível criar um novo grupo')
+            displayError(error, 'Nova turma', 'Não foi possível criar uma nova turma')
         }
     }
 

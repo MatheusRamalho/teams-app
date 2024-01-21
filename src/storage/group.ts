@@ -24,7 +24,7 @@ export const groupCreate = async (newGroup: string) => {
         const groupAlreadyExists = storedGroups.includes(newGroup)
 
         if (groupAlreadyExists) {
-            throw new AppError('Já existe um grupo cadastrado com esse nome!')
+            throw new AppError('Já existe uma turma cadastrada com esse nome!')
         }
 
         const newStorageGroup = JSON.stringify([...storedGroups, newGroup])
@@ -40,8 +40,8 @@ export const groupRemove = async (groupDeleted: string) => {
         const storedGroups = await groupsGetAll()
         const groupsWithoutStored = storedGroups.filter((group) => group !== groupDeleted)
 
-        await AsyncStorage.setItem(GROUP_COLLECTION, JSON.stringify(groupsWithoutStored)) // Deleta o grupo
-        await AsyncStorage.removeItem(`${PLAYER_COLLECTION}-${groupDeleted}`) // Deleta os players do grupo
+        await AsyncStorage.setItem(GROUP_COLLECTION, JSON.stringify(groupsWithoutStored)) // Deleta a turma
+        await AsyncStorage.removeItem(`${PLAYER_COLLECTION}-${groupDeleted}`) // Deleta os players do turma
     } catch (error) {
         throw error
     }
