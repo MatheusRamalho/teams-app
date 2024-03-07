@@ -1,47 +1,98 @@
-<h1 align="center"> Teams app </h1>
+# Teams App
 
-<p align="center">
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
-</p>
+<br />
 
-<p align="center">
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
-</p>
+![thumbnail](.github/thumbnail.png?style=flat)
 
-<br>
+<br />
 
-<p align="center">
-  <img alt="Preview do projeto" src=".github/preview.png" width="50%" />
-</p>
 
-## 🚀 Tecnologias
+## 📌 Tópicos
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+- [Descrição do projeto](#-projeto)
+- [Funcionalidades](#-stack)
+- [Funcionalidades](#-funcionalidades)
+- [Layout da Aplicação](#-layout)
+- [Pré-requisitos](#-pré-requisitos)
+- [Como rodar a aplicação](#-rodando-a-aplicação)
+- [Licença](#-licença)
+- [Desenvolvedores e contribuintes](#-Desenvolvedores)
+
+<br />
+
+## 💡 Projeto
+
+Teams app é um aplicativo para você cadastrar turmas e nessas turmas montar seu time de amigos.
+
+<br />
+
+## ⭐ Stack
 
 - React Native
-- StyleSheet
-- TypeScript
+- Typescript
+- Expo
+- Styled Components
 - Git
 - Github
 
-## 💻 Projeto
+<br />
 
-Um projeto de aprendizado que serve para adicionar uma tarefas em uma lista de tarefas. Podendo deletar tarefas e marcar ou desmarcar as mesmas como concluidas ou não concluidas.
+## 🧰 Funcionalidades
+
+- Listagem de turma
+- Adicionar turma
+- Adicionar participante a turma
+- Remvoer participante da turma
+- Remover turma
+- Detalhes da turma
+
+<br />
 
 ## 🔖 Layout
 
-Você pode visualizar o projeto através do link abaixo:
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/community/file/1151864427495057381/ignite-teams). É necessário ter conta no [Figma](http://figma.com/) para acessá-lo.
 
-- [Live Preview]()
+<br />
 
-## :memo: Licença
+## 🛟 Pré-requisitos
 
-Esse projeto está sob a licença MIT.
+Antes de começar, verifique se atendeu aos seguintes requisitos:
 
----
+- [Node](https://nodejs.org)
+- [Npm](https://www.npmjs.com/)
+- [VsCode](https://code.visualstudio.com/)
+- [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&pcampaignid=web_share)
 
-Projeto proposto pela Rocketseat durante o curso de React Native do Ignite <br/>
-by Matheus Ramalho - [matheusramalho.dev](matheusramalho.dev)
+<br />
+
+## 🎯 Rodando a aplicação
+
+Clone o repositório
+
+```bash
+git clone https://github.com/MatheusRamalho/teams-app.git
+```
+
+Utilize o **npm** para instalar as dependências do projeto.
+
+```bash
+npm install
+```
+
+Em seguida, inicie o projeto.
+
+```bash
+npx expo start
+```
+
+<br />
+
+## 📝 Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
+<br />
+
+## 🧠 Desenvolvedores
+
+[<img src="https://avatars.githubusercontent.com/u/15633283?v=4" width=80> <br><sub>Matheus Ramalho</sub>](https://github.com/MatheusRamalho)
