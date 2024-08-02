@@ -16,7 +16,6 @@ import { Input } from '@components/Input'
 import { Filter } from '@components/Filter'
 import { PlayerCard } from '@components/PlayerCard'
 import { ListEmpty } from '@components/ListEmpty'
-import { Loading } from '@components/Loading'
 
 import { Container, Form, HeaderList, NumberOfPlayers } from './styles'
 
@@ -25,7 +24,7 @@ interface RoutesParams {
 }
 
 export const Players = () => {
-    const [isLoading, setIsLoading] = useState(true)
+    const [, setIsLoading] = useState(true)
     const [team, setTeam] = useState<string>('Time A')
     const [newPlayerName, setNewPlayerName] = useState<string>('')
     const [players, setPlayers] = useState<PlayerStorageDTO[]>([])
@@ -142,20 +141,20 @@ export const Players = () => {
                 <NumberOfPlayers> {players.length} </NumberOfPlayers>
             </HeaderList>
 
-            {isLoading ? (
+            {/* {isLoading ? (
                 <Loading />
-            ) : (
-                <FlatList
-                    data={players}
-                    keyExtractor={(item) => item.name}
-                    renderItem={({ item }) => (
-                        <PlayerCard name={item.name} onRemove={() => handleRemovePlayer(item.name)} />
-                    )}
-                    showsVerticalScrollIndicator={false}
-                    ListEmptyComponent={() => <ListEmpty message="Não há pessoas nesse time" />}
-                    contentContainerStyle={[{ paddingBottom: 100 }, players.length === 0 && { flex: 1 }]}
-                />
-            )}
+            ) : ( */}
+            <FlatList
+                data={players}
+                keyExtractor={(item) => item.name}
+                renderItem={({ item }) => (
+                    <PlayerCard name={item.name} onRemove={() => handleRemovePlayer(item.name)} />
+                )}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={() => <ListEmpty message="Não há pessoas nesse time" />}
+                contentContainerStyle={[{ paddingBottom: 100 }, players.length === 0 && { flex: 1 }]}
+            />
+            {/* )} */}
 
             <Button type="SECONDARY" title="Remover turma" onPress={handleRemoveGroup} />
         </Container>
